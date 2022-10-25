@@ -7,7 +7,8 @@ import Profile from './Profile';
 import ProfilesList from './ProfilesList';
 
 function Form() {
-  const [profileId, setProfileId] = React.useState('')
+  const [profileId, setProfileId] = React.useState('');
+  const [editProfileCheck, setEditProfileCheck] = React.useState(false);
   const [page, setPage] = React.useState(0);
   const [basicInfo, setBasicInfo] = React.useState({
     firstName: '',
@@ -25,9 +26,9 @@ function Form() {
   const currentPage = () => {
     if (page === 0) return <BasicInfo basicInfo={basicInfo} setBasicInfo={setBasicInfo} page={page} setPage={setPage}/>;
     else if (page === 1) return <About about={about} setAbout={setAbout} page={page} setPage={setPage}/>;
-    else if (page === 2) return <Summary basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
+    else if (page === 2) return <Summary profileId={profileId} editProfileCheck={editProfileCheck} basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
     else if (page === 3) return <ProfilesList setProfileId={setProfileId} setBasicInfo={setBasicInfo} setAbout={setAbout} setPage={setPage}/>;
-    else return <Profile _id={profileId}  basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
+    else return <Profile setEditProfileCheck={setEditProfileCheck} _id={profileId}  basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
   };
 
   const boxStyle = {

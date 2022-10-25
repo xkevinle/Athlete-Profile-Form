@@ -15,19 +15,40 @@ interface ISummaryProps {
     location: string;
     team: string;
   };
+  profileId: string;
   page: number;
+  editProfileCheck: boolean;
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function Summary (props: ISummaryProps) {
   const handleSubmit = async () => {
     try {
+      // const body = {
+      //   ...props.basicInfo,
+      //   ...props.about
+      // };
+      // await fetch('/api/create', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'Application/JSON',
+      //   },
+      //   body: JSON.stringify(body)
+      // });
+      props.setPage(props.page + 1);
+    } catch (error) {
+      console.log(`Error in Submit button: ${error}`)
+    }
+  };
+
+  const handleSaveChanges = async () => {
+    try {
       const body = {
         ...props.basicInfo,
         ...props.about
       };
-      await fetch('/api/create', {
-        method: 'POST',
+      await fetch(`/api/${props.profileId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'Application/JSON',
         },
@@ -35,10 +56,9 @@ function Summary (props: ISummaryProps) {
       });
       props.setPage(props.page + 1);
     } catch (error) {
-      console.log(`Error in Submit button: ${error}`)
+      console.log(`Error in Save Changes button: ${error}`)
     }
-    
-  };
+  }
 
   return (
     <Box sx={{ position: 'relative', height: 1 }}>
@@ -61,7 +81,8 @@ function Summary (props: ISummaryProps) {
         </Box>
       </Box>
       <Button sx={{ position: 'absolute', bottom: 0, left: 0}} variant="contained" onClick={() => props.setPage(props.page - 1)} >Back</Button>
-      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleSubmit} >Submit</Button>
+      {props.editProfileCheck ? <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleSaveChanges} >Save Changes</Button> : 
+      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleSubmit} >Submit</Button>}
     </Box>
   );
 }

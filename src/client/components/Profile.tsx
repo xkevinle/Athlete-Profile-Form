@@ -18,9 +18,15 @@ interface IProfileProps {
   };
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  setEditProfileCheck: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Profile (props: IProfileProps) {
+  const handleEditProfile = () => {
+    props.setEditProfileCheck(true);
+    props.setPage(0);
+  }
+
   return (
     <Box sx={{ position: 'relative', height: 1 }}>
       <Typography sx={{ textAlign: 'center' }} variant="h3" >Selected Profile</Typography>
@@ -34,6 +40,7 @@ function Profile (props: IProfileProps) {
         <Typography>Team: {props.about.team}</Typography>
       </Box>
       <Button sx={{ position: 'absolute', bottom: 0, left: 0}} variant="contained" onClick={() => props.setPage(3)} >List of profiles</Button>
+      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleEditProfile} >Edit Profile</Button>
     </Box>
   );
 }

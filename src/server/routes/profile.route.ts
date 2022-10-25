@@ -7,6 +7,6 @@ profileRouter.post('/create', profileController.createProfile, (req: Request, re
 
 profileRouter.get('/', profileController.getProfiles, (req: Request, res: Response) => res.status(200).json(res.locals.profiles));
 
-profileRouter.patch('/:_id', profileController.getProfiles, (req: Request, res: Response) => res.status(200).json(res.locals.profiles));
+profileRouter.put('/:_id', profileController.updateProfile, (req: Request, res: Response) => res.status(200).json(res.locals.updatedProfile));
 
 export default profileRouter;

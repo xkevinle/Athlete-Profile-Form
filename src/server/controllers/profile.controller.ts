@@ -43,6 +43,8 @@ const profileController = {
   updateProfile: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { _id } = req.params;
+      console.log(req.params)
+      console.log(req.body)
       res.locals.updatedProfile = await Profile.findOneAndUpdate({ _id }, req.body);
       return next();
     } catch (error) {
