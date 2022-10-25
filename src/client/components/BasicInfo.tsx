@@ -12,14 +12,14 @@ interface IBasicInfoProps {
     lastName: string;
     sports: string[];
     gender: string;
-    dob: Dayjs;
+    dob: Date;
   };
   setBasicInfo: React.Dispatch<React.SetStateAction<{
     firstName: string;
     lastName: string;
     sports: string[];
     gender: string;
-    dob: dayjs.Dayjs;
+    dob: Date;
   }>>;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
@@ -47,7 +47,8 @@ function getStyles(name: string, sport: string[], theme: Theme) {
 
 function BasicInfo (props: IBasicInfoProps) {
   const theme = useTheme();
-  const [dob, setDob] = React.useState<Dayjs | null>(dayjs('2001-01-01'));
+  const [dob, setDob] = React.useState<Dayjs | null>(dayjs(props.basicInfo.dob));
+  const [missingInputsError, setMissingInputsError] = React.useState('');
 
   const handleFirstName = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     props.setBasicInfo({ ...props.basicInfo, firstName: event.target.value})
@@ -70,7 +71,15 @@ function BasicInfo (props: IBasicInfoProps) {
 
   const handleDobChange = (newValue: Dayjs | null) => {
     setDob(newValue);
+    props.setBasicInfo({ ...props.basicInfo, dob: newValue?.toDate() as Date})
   };
+
+  const handleNextButton = () => {
+    if (!props.basicInfo.firstName || !props.basicInfo.firstName || !props.basicInfo.gender || !props.basicInfo.sports) {
+      setMissingInputsError('Missing inputs!')
+    }
+    else props.setPage(props.page + 1)
+  }
 
   return (
     <Box sx={{ position: 'relative', height: 1 }}>
@@ -124,9 +133,9 @@ function BasicInfo (props: IBasicInfoProps) {
             ))}
           </Select>
         </FormControl>
-        
       </Box>
-      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={() => props.setPage(props.page + 1)} >Next</Button>
+      <Typography sx={{ textAlign: 'center' }}>{missingInputsError}</Typography>
+      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleNextButton} >Next</Button>
     </Box>
   )
 }

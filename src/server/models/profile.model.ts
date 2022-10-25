@@ -2,9 +2,8 @@ import { connect, model, Schema, Model, Document, Types } from 'mongoose';
 
 
 const MONGO_URI = 'mongodb+srv://opensponsorship:OfFnd5tYHquW6PNK@cluster0.uvftduh.mongodb.net/?retryWrites=true&w=majority';
+
 connect(MONGO_URI, {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
   dbName: 'atheleteProfiles'
 })
   .then(() => console.log('Connected to MongoDB.'))
@@ -16,7 +15,7 @@ interface IProfileSchema extends Document {
   sports: string[];
   gender: string;
   dob: Date;
-  description: string;
+  interests: string;
   location: string;
   team: string;
 }
@@ -27,7 +26,7 @@ const ProfileSchema: Schema = new Schema({
   sports: { type: [String], required: true },
   gender: { type: String, required: true },
   dob: { type: Date, required: true },
-  description: { type: String, required: true },
+  interests: { type: String, required: true },
   location: { type: String, required: true },
   team: { type: String, required: true },
 });

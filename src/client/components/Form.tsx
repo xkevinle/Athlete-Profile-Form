@@ -1,5 +1,4 @@
 import React from 'react';
-import dayjs from 'dayjs';
 import { Box } from '@mui/system';
 import BasicInfo from './BasicInfo';
 import About from './About';
@@ -8,16 +7,17 @@ import Profile from './Profile';
 import ProfilesList from './ProfilesList';
 
 function Form() {
+  const [profileId, setProfileId] = React.useState('')
   const [page, setPage] = React.useState(0);
   const [basicInfo, setBasicInfo] = React.useState({
     firstName: '',
     lastName: '',
     sports: [] as string[],
     gender: '',
-    dob: dayjs(new Date()),
+    dob: new Date(),
   });
   const [about, setAbout] = React.useState({
-    description: '',
+    interests: '',
     location: '',
     team: ''
   });
@@ -26,8 +26,8 @@ function Form() {
     if (page === 0) return <BasicInfo basicInfo={basicInfo} setBasicInfo={setBasicInfo} page={page} setPage={setPage}/>;
     else if (page === 1) return <About about={about} setAbout={setAbout} page={page} setPage={setPage}/>;
     else if (page === 2) return <Summary basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
-    else if (page === 3) return <Profile basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
-    else return <ProfilesList setPage={setPage}/>;
+    else if (page === 3) return <ProfilesList setProfileId={setProfileId} setBasicInfo={setBasicInfo} setAbout={setAbout} setPage={setPage}/>;
+    else return <Profile _id={profileId}  basicInfo={basicInfo} about={about} page={page} setPage={setPage}/>;
   };
 
   const boxStyle = {
@@ -35,7 +35,7 @@ function Form() {
     margin: 5,
     padding: 5,
     height: '66%',
-    minWidth: '33%',
+    minWidth: '50%',
     maxWidth: '50%',
     borderRadius: 2,
     boxShadow: 5
