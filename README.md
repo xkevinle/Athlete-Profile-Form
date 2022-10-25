@@ -1,6 +1,6 @@
 # Athlete Profile Form
 
-This is a multi-step profile form for atheletes.
+This is a multi-step profile form for athletes.
 
 ## Available Scripts
 
