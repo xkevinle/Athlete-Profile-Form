@@ -24,17 +24,17 @@ interface ISummaryProps {
 function Summary (props: ISummaryProps) {
   const handleSubmit = async () => {
     try {
-      // const body = {
-      //   ...props.basicInfo,
-      //   ...props.about
-      // };
-      // await fetch('/api/create', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'Application/JSON',
-      //   },
-      //   body: JSON.stringify(body)
-      // });
+      const body = {
+        ...props.basicInfo,
+        ...props.about
+      };
+      await fetch('/api/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/JSON',
+        },
+        body: JSON.stringify(body)
+      });
       props.setPage(props.page + 1);
     } catch (error) {
       console.log(`Error in Submit button: ${error}`)
