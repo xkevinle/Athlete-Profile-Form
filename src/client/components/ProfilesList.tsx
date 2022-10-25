@@ -104,7 +104,7 @@ function ProfilesList (props: IProfilesListProps) {
                 <TableCell component="th" scope="row">
                   {<Link onClick={() => handleClickedProfile(row)}>{row.firstName} {row.lastName}</Link>}
                 </TableCell>
-                <TableCell align="right">{row.sports}</TableCell>
+                <TableCell align="right">{row.sports.join(', ')}</TableCell>
                 <TableCell align="right">{row.gender}</TableCell>
                 <TableCell align="right">{row.team}</TableCell>
                 <TableCell align="right">{row.interests}</TableCell>
