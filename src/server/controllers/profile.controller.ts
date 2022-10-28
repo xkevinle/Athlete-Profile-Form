@@ -19,7 +19,6 @@ const profileController = {
       })
     }
     try {
-      console.log(req.body)
       res.locals.profile = await Profile.create(req.body);
       return next();
     } catch (error) {
@@ -43,8 +42,6 @@ const profileController = {
   updateProfile: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { _id } = req.params;
-      console.log(req.params)
-      console.log(req.body)
       res.locals.updatedProfile = await Profile.findOneAndUpdate({ _id }, req.body);
       return next();
     } catch (error) {

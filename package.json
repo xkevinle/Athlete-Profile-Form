@@ -27,8 +27,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "ts-node src/server/server.ts",
-    "build": "webpack",
+    "start": "node dist/server/server.js",
+    "build": "tsc && webpack",
     "serve": "webpack serve --mode=development"
   },
   "eslintConfig": {
