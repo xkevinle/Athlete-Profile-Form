@@ -135,6 +135,7 @@ function BasicInfo (props: IBasicInfoProps) {
         </FormControl>
       </Box>
       <Typography sx={{ textAlign: 'center' }}>{missingInputsError}</Typography>
+      <Button sx={{ position: 'absolute', bottom: 0, left: 0}} variant="contained" onClick={() => props.setPage(3)} >List of profiles</Button>
       <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleNextButton} >Next</Button>
     </Box>
   )

@@ -4,7 +4,7 @@ import { connect, model, Schema, Model, Document, Types } from 'mongoose';
 const MONGO_URI = 'mongodb+srv://opensponsorship:OfFnd5tYHquW6PNK@cluster0.uvftduh.mongodb.net/?retryWrites=true&w=majority';
 
 connect(MONGO_URI, {
-  dbName: 'atheleteProfiles'
+  dbName: 'athleteProfiles'
 })
   .then(() => console.log('Connected to MongoDB.'))
   .catch(err => console.log(err))

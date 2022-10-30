@@ -63,7 +63,7 @@ function Summary (props: ISummaryProps) {
   return (
     <Box sx={{ position: 'relative', height: 1 }}>
       <Typography sx={{ textAlign: 'center'}} variant="h4" >Summary</Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'column', padding: 10, margin: 4, gap: 2, border: '1px solid #034f84', borderRadius: 2}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', padding: 10, margin: 4, gap: 2, border: '1px solid #034f84', borderRadius: 2 }}>
         <Box>
           <Typography sx={{ textAlign: 'center'}}>Basic Information</Typography>
           <Typography>Name: {`${props.basicInfo.firstName} ${props.basicInfo.lastName}`}</Typography>

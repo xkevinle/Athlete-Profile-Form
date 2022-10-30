@@ -37,9 +37,9 @@ function Form() {
     padding: 5,
     height: '66%',
     minWidth: '33%',
-    maxWidth: '50%',
     borderRadius: 2,
-    boxShadow: 5
+    boxShadow: 5,
+    overflow: 'auto'
   };
 
   return (
