@@ -49,7 +49,7 @@ interface IAboutProps {
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function About (props: IAboutProps) {
+function About(props: IAboutProps) {
   const [value, setValue] = React.useState<PlaceType | null>({
     description: props.about.location,
     structured_formatting: {
@@ -62,7 +62,7 @@ function About (props: IAboutProps) {
   const [options, setOptions] = React.useState<readonly PlaceType[]>([]);
   const [missingInputsError, setMissingInputsError] = React.useState('');
   const loaded = React.useRef(false);
-  
+
 
   if (typeof window !== 'undefined' && !loaded.current) {
     if (!document.querySelector('#google-maps')) {
@@ -125,7 +125,7 @@ function About (props: IAboutProps) {
         setOptions(newOptions);
       }
     });
-    
+
     return () => {
       active = false;
     };
@@ -150,8 +150,8 @@ function About (props: IAboutProps) {
     <Box sx={{ position: 'relative', height: 1 }}>
       <Typography sx={{ textAlign: 'center' }} variant="h4" >About</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', padding: 10, gap: 2 }}>
-        <TextField id="outlined-basic" label="Interests" variant="outlined" onChange={handleInterests} value={props.about.interests}/>
-        <TextField id="outlined-basic" label="Team (ex: Cowboys)" variant="outlined" onChange={handleTeam} value={props.about.team}/>
+        <TextField id="outlined-basic" label="Interests" variant="outlined" onChange={handleInterests} value={props.about.interests} />
+        <TextField id="outlined-basic" label="Team (ex: Cowboys)" variant="outlined" onChange={handleTeam} value={props.about.team} />
         <Autocomplete
           id="google-map-demo"
           sx={{ width: 300 }}
@@ -170,7 +170,7 @@ function About (props: IAboutProps) {
           }}
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
-            props.setAbout({...props.about, location: newInputValue})
+            props.setAbout({ ...props.about, location: newInputValue })
           }}
           renderInput={(params) => (
             <TextField {...params} label="Enter location" fullWidth />
@@ -213,8 +213,8 @@ function About (props: IAboutProps) {
         />
       </Box>
       <Typography sx={{ textAlign: 'center' }}>{missingInputsError}</Typography>
-      <Button sx={{ position: 'absolute', bottom: 0, left: 0}} variant="contained" onClick={() => props.setPage(props.page - 1)} >Back</Button>
-      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleNextButton} >Next</Button>
+      <Button sx={{ position: 'absolute', bottom: 0, left: 0 }} variant="contained" onClick={() => props.setPage(props.page - 1)} >Back</Button>
+      <Button sx={{ position: 'absolute', bottom: 0, right: 0 }} variant="contained" onClick={handleNextButton} >Next</Button>
     </Box>
   )
 }

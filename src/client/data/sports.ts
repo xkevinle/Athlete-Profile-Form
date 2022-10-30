@@ -47,7 +47,7 @@ const sports = [
   "Squash",
   "Surfing",
   "Swimming",
-  "Track and Field"
+  "Track and Field",
 ];
 
 export default sports;

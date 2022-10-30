@@ -45,17 +45,17 @@ function getStyles(name: string, sport: string[], theme: Theme) {
   };
 }
 
-function BasicInfo (props: IBasicInfoProps) {
+function BasicInfo(props: IBasicInfoProps) {
   const theme = useTheme();
   const [dob, setDob] = React.useState<Dayjs | null>(dayjs(props.basicInfo.dob));
   const [missingInputsError, setMissingInputsError] = React.useState('');
 
   const handleFirstName = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    props.setBasicInfo({ ...props.basicInfo, firstName: event.target.value})
+    props.setBasicInfo({ ...props.basicInfo, firstName: event.target.value })
   };
 
   const handleLastName = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    props.setBasicInfo({ ...props.basicInfo, lastName: event.target.value})
+    props.setBasicInfo({ ...props.basicInfo, lastName: event.target.value })
   };
 
   const handleSelectedSports = (event: SelectChangeEvent<typeof props.basicInfo.sports>) => {
@@ -66,12 +66,12 @@ function BasicInfo (props: IBasicInfoProps) {
   };
 
   const handleGenderChange = (event: SelectChangeEvent) => {
-    props.setBasicInfo({...props.basicInfo, gender: event.target.value});
+    props.setBasicInfo({ ...props.basicInfo, gender: event.target.value });
   };
 
   const handleDobChange = (newValue: Dayjs | null) => {
     setDob(newValue);
-    props.setBasicInfo({ ...props.basicInfo, dob: newValue?.toDate() as Date})
+    props.setBasicInfo({ ...props.basicInfo, dob: newValue?.toDate() as Date })
   };
 
   const handleNextButton = () => {
@@ -85,8 +85,8 @@ function BasicInfo (props: IBasicInfoProps) {
     <Box sx={{ position: 'relative', height: 1 }}>
       <Typography sx={{ textAlign: 'center' }} variant="h4" >Basic Information</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', padding: 10, gap: 2 }}>
-        <TextField id="outlined-basic" label="First Name" variant="outlined" onChange={handleFirstName} value={props.basicInfo.firstName}/>
-        <TextField id="outlined-basic" label="Last Name" variant="outlined" onChange={handleLastName} value={props.basicInfo.lastName}/>
+        <TextField id="outlined-basic" label="First Name" variant="outlined" onChange={handleFirstName} value={props.basicInfo.firstName} />
+        <TextField id="outlined-basic" label="Last Name" variant="outlined" onChange={handleLastName} value={props.basicInfo.lastName} />
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <FormControl sx={{ minWidth: 120 }}>
             <InputLabel id="gender-label">Gender</InputLabel>
@@ -103,12 +103,12 @@ function BasicInfo (props: IBasicInfoProps) {
           </FormControl>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DesktopDatePicker
-                label="Date of birth"
-                inputFormat="MM/DD/YYYY"
-                value={dob}
-                onChange={handleDobChange}
-                renderInput={(params) => <TextField {...params } sx={{ maxWidth: 150 }}/>}
-              />
+              label="Date of birth"
+              inputFormat="MM/DD/YYYY"
+              value={dob}
+              onChange={handleDobChange}
+              renderInput={(params) => <TextField {...params} sx={{ maxWidth: 150 }} />}
+            />
           </LocalizationProvider>
         </Box>
         <FormControl sx={{ minWidth: 120 }}>
@@ -135,8 +135,8 @@ function BasicInfo (props: IBasicInfoProps) {
         </FormControl>
       </Box>
       <Typography sx={{ textAlign: 'center' }}>{missingInputsError}</Typography>
-      <Button sx={{ position: 'absolute', bottom: 0, left: 0}} variant="contained" onClick={() => props.setPage(3)} >List of profiles</Button>
-      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleNextButton} >Next</Button>
+      <Button sx={{ position: 'absolute', bottom: 0, left: 0 }} variant="contained" onClick={() => props.setPage(3)} >List of profiles</Button>
+      <Button sx={{ position: 'absolute', bottom: 0, right: 0 }} variant="contained" onClick={handleNextButton} >Next</Button>
     </Box>
   )
 }

@@ -31,7 +31,7 @@ interface IProfile {
   interests: string;
 }
 
-function ProfilesList (props: IProfilesListProps) {
+function ProfilesList(props: IProfilesListProps) {
   const [profiles, setProfiles] = React.useState([]);
 
   React.useEffect(() => {

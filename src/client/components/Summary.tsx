@@ -21,7 +21,7 @@ interface ISummaryProps {
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Summary (props: ISummaryProps) {
+function Summary(props: ISummaryProps) {
   const handleSubmit = async () => {
     try {
       const body = {
@@ -62,10 +62,10 @@ function Summary (props: ISummaryProps) {
 
   return (
     <Box sx={{ position: 'relative', height: 1 }}>
-      <Typography sx={{ textAlign: 'center'}} variant="h4" >Summary</Typography>
+      <Typography sx={{ textAlign: 'center' }} variant="h4" >Summary</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', padding: 10, margin: 4, gap: 2, border: '1px solid #034f84', borderRadius: 2 }}>
         <Box>
-          <Typography sx={{ textAlign: 'center'}}>Basic Information</Typography>
+          <Typography sx={{ textAlign: 'center' }}>Basic Information</Typography>
           <Typography>Name: {`${props.basicInfo.firstName} ${props.basicInfo.lastName}`}</Typography>
           <Typography>Sports: {props.basicInfo.sports.join(', ')}</Typography>
           <Typography>Gender: {props.basicInfo.gender}</Typography>
@@ -73,16 +73,16 @@ function Summary (props: ISummaryProps) {
           <Button onClick={() => props.setPage(0)} variant="outlined">Edit</Button>
         </Box>
         <Box>
-          <Typography sx={{ textAlign: 'center'}}>About</Typography>
+          <Typography sx={{ textAlign: 'center' }}>About</Typography>
           <Typography>Interests: {props.about.interests}</Typography>
           <Typography>Location: {props.about.location}</Typography>
           <Typography>Team: {props.about.team}</Typography>
           <Button onClick={() => props.setPage(1)} variant="outlined">Edit</Button>
         </Box>
       </Box>
-      <Button sx={{ position: 'absolute', bottom: 0, left: 0}} variant="contained" onClick={() => props.setPage(props.page - 1)} >Back</Button>
-      {props.editProfileCheck ? <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleSaveChanges} >Save Changes</Button> : 
-      <Button sx={{ position: 'absolute', bottom: 0, right: 0}} variant="contained" onClick={handleSubmit} >Submit</Button>}
+      <Button sx={{ position: 'absolute', bottom: 0, left: 0 }} variant="contained" onClick={() => props.setPage(props.page - 1)} >Back</Button>
+      {props.editProfileCheck ? <Button sx={{ position: 'absolute', bottom: 0, right: 0 }} variant="contained" onClick={handleSaveChanges} >Save Changes</Button> :
+        <Button sx={{ position: 'absolute', bottom: 0, right: 0 }} variant="contained" onClick={handleSubmit} >Submit</Button>}
     </Box>
   );
 }
