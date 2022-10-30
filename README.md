@@ -11,6 +11,11 @@ In the project directory, you can run:
 Runs the app in the production mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+### `npm run dev`
+
+Use ts-node to execute TypeScript on Node.js without precompiling for the server.ts file.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\

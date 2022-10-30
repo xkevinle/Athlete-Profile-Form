@@ -9,4 +9,6 @@ profileRouter.get('/', profileController.getProfiles, (req: Request, res: Respon
 
 profileRouter.put('/:_id', profileController.updateProfile, (req: Request, res: Response) => res.status(200).json(res.locals.updatedProfile));
 
+profileRouter.delete('/:_id', profileController.deleteProfile, (req: Request, res: Response) => res.status(200).json(res.locals.deletedProfile));
+
 export default profileRouter;

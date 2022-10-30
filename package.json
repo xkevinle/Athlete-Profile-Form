@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "node dist/server/server.js",
+    "dev": "ts-node src/server/server.ts",
     "build": "tsc && webpack",
     "serve": "webpack serve --mode=development"
   },

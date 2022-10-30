@@ -83,37 +83,39 @@ function ProfilesList (props: IProfilesListProps) {
   return (
     <Box sx={{ position: 'relative', height: 1 }}>
       <Typography sx={{ textAlign: 'center' }} variant="h3" >List of Profiles</Typography>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Sport(s)</TableCell>
-              <TableCell align="right">Gender</TableCell>
-              <TableCell align="right">Team</TableCell>
-              <TableCell align="right">Interests</TableCell>
-              <TableCell align="right">Location</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {profiles.map((row: IProfile) => (
-              <TableRow
-                key={row.firstName + row.lastName}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {<Link onClick={() => handleClickedProfile(row)}>{row.firstName} {row.lastName}</Link>}
-                </TableCell>
-                <TableCell align="right">{row.sports.join(', ')}</TableCell>
-                <TableCell align="right">{row.gender}</TableCell>
-                <TableCell align="right">{row.team}</TableCell>
-                <TableCell align="right">{row.interests}</TableCell>
-                <TableCell align="right">{row.location}</TableCell>
+      <Box sx={{ height: '75%', overflow: 'auto' }}>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell align="right">Sport(s)</TableCell>
+                <TableCell align="right">Gender</TableCell>
+                <TableCell align="right">Team</TableCell>
+                <TableCell align="right">Interests</TableCell>
+                <TableCell align="right">Location</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {profiles.map((row: IProfile) => (
+                <TableRow
+                  key={row.firstName + row.lastName}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {<Link onClick={() => handleClickedProfile(row)}>{row.firstName} {row.lastName}</Link>}
+                  </TableCell>
+                  <TableCell align="right">{row.sports.join(', ')}</TableCell>
+                  <TableCell align="right">{row.gender}</TableCell>
+                  <TableCell align="right">{row.team}</TableCell>
+                  <TableCell align="right">{row.interests}</TableCell>
+                  <TableCell align="right">{row.location}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
       <Button sx={{ position: 'absolute', bottom: 0, left: 0 }} variant="contained" onClick={handleCreateProfileButton} >Create new profile</Button>
     </Box>
   );

@@ -51,6 +51,18 @@ const profileController = {
       });
     }
   },
+  deleteProfile: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { _id } = req.params;
+      res.locals.deletedProfile = await Profile.deleteOne({ _id });
+      return next();
+    } catch (error) {
+      return next({
+        log: 'profile.controller deleteProfile ERROR',
+        message: 'Error occurred in profile controller for deleteProfile. Check log for more details.'
+      });
+    }
+  },
 }
 
 export default profileController;
